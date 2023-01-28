@@ -1,9 +1,14 @@
 import React,{useState} from "react";
-import axios from "axios"
+import axios from "axios";
 import "./signup.css";
+// import { useHistory } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const Signup =()=>{
     
+    // const history = useHistory();
+    const navigate = useNavigate();
+
     const [ user, setUser] = useState({         //creating hook for maintaing all input elements.
         fname: "",
         lname:"",
@@ -27,7 +32,8 @@ const Signup =()=>{
             .post("http://localhost:9002/register", user)
             .then((res) => {
               alert(res.data.message);
-            //   history.push("/login");
+              navigate('/login');
+              // history.push("/login");
             });
         } else {
           alert("Invalid input");
@@ -43,6 +49,10 @@ const Signup =()=>{
             <input type="password" name="password" value={user.password} onChange={handleChange} placeholder="Enter Password"></input>
             
             <div className="button" onClick={register}>Register</div>
+            <div> or </div>
+
+            {/* <div className="button" onClick={() => history.push("/login")}>Login</div> */}
+            <div className="button" onClick={() => navigate('/login')}>Login</div>
         </div>
     )
 };
