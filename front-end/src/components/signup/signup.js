@@ -1,4 +1,5 @@
 import React,{useState} from "react";
+import axios from "axios"
 import "./signup.css";
 
 const Signup =()=>{
@@ -18,13 +19,20 @@ const Signup =()=>{
         })
     }    
 
-    // const handleChange = event => {
-    //     const { name, value } = event.target
-    //     setUser({
-    //         ...user,
-    //         [name]: value
-    //     })
-    // }
+    function register() {
+        const { fname, lname, email, password } = user;
+        if (fname && lname && email && password) {
+            alert("hogya")
+          axios
+            .post("http://localhost:9002/register", user)
+            .then((res) => {
+              alert(res.data.message);
+            //   history.push("/login");
+            });
+        } else {
+          alert("Invalid input");
+        }
+      }
 
     return(
         <div className="signup">
@@ -34,7 +42,7 @@ const Signup =()=>{
             <input type="email" name="email" value={user.email} onChange={handleChange} placeholder="Enter your Email"></input>
             <input type="password" name="password" value={user.password} onChange={handleChange} placeholder="Enter Password"></input>
             
-            <div className="button">Register</div>
+            <div className="button" onClick={register}>Register</div>
         </div>
     )
 };
