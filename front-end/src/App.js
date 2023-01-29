@@ -11,20 +11,19 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route exact path="/" component={(user && user._id) ? {Homepage} : {Login}} />
-          {/* <Route exact path='/' render={() => (
-            user && user._id ? <Homepage setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser}/>
-          )} /> */}
+          <Route exact path="/" element={user && user._id ? <Homepage setLoginUser={setLoginUser}/> : <Login setLoginUser={setLoginUser}/>} />
+          {/* <Route exact path="/" element={(user && user._id) ? {<Homepage/>} : {<Login/>}} /> */}
+
           {/* <Route exact path="/">
             {
               user && user._id ? <Homepage setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser}/>
             }
           </Route> */}
-          <Route path="register" component={Login}/>
+          <Route path="login" element={<Login setLoginUser={setLoginUser}/>}/>
           {/* <Route path="/login">
             <Login setLoginUser={setLoginUser}/>
           </Route> */}
-          <Route path="register" component={Signup}/>
+          <Route path="register" element={<Signup/>}/>
           {/* <Route path="/register">
             <Signup />
           </Route> */}

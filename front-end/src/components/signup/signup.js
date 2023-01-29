@@ -27,7 +27,7 @@ const Signup =()=>{
     function register() {
         const { fname, lname, email, password } = user;
         if (fname && lname && email && password) {
-            alert("hogya")
+            // alert("hogya")
           axios
             .post("http://localhost:9002/register", user)
             .then((res) => {
