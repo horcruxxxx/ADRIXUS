@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 export const GlobalFilter = ({ filter, setFilter }) => {
   return (
-    <span>
+    <span className="searchbar">
       Search:{' '}
       <input
         value={filter || ''}

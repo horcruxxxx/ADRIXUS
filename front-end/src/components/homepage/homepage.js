@@ -54,13 +54,13 @@ const Homepage =({setLoginUser})=>{
           })}
         </tbody>
       </table>
-      <div>
+      <div className="buttons">
         <button onClick={()=> previousPage()} disabled={!canPreviousPage}>Previous</button>
-        <button className="button2" onClick={()=> nextPage()} disabled={!canNextPage}>Next</button>
+        <button onClick={()=> nextPage()} disabled={!canNextPage}>Next</button>
+        <button  onClick={() => setLoginUser({})} >Logout</button>
       </div>
-      <div className="homepage">
-            <h1>ADRIXUS</h1>
-            <div className="button" onClick={() => setLoginUser({})} >Logout</div>
+      <div className="footer">
+            <h1>ADRIXUS DASHBOARD</h1>
       </div>
     </>
   )
