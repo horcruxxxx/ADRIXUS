@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors"); 
+const md5 = require("md5"); //for Hasing.
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded());
@@ -28,7 +29,7 @@ app.post("/login", (req, res)=> {
     const { email, password} = req.body
     User.findOne({ email: email}, (err, user) => {
         if(user){
-            if(password === user.password ) {
+            if(md5(password) === user.password ) {
                 res.send({message: "Login Successfull", user: user})
             } else {
                 res.send({ message: "Password didn't match"})
@@ -50,7 +51,8 @@ app.post("/register", (req, res)=> {
                 fname,
                 lname,
                 email,
-                password
+                password: md5(password)
+                // password
             })
             user.save(function(err){
                 if(err) {

@@ -1,6 +1,6 @@
 import "./homepage.css";
 import React, { useMemo } from 'react'
-import { useTable, useGlobalFilter } from 'react-table'
+import { useTable, useGlobalFilter,usePagination } from 'react-table'
 import MOCK_DATA from '../MOCK_DATA.json'
 import { COLUMNS } from '../columns'
 import { GlobalFilter } from "../Globalfilter";
@@ -13,14 +13,18 @@ const Homepage =({setLoginUser})=>{
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    rows,
+    page,
+    nextPage,
+    previousPage,
     prepareRow,
+    canPreviousPage,
+    canNextPage,
     state,
     setGlobalFilter,
   } = useTable({
     columns,
     data
-  },useGlobalFilter)
+  },useGlobalFilter,usePagination)
 
   const {globalFilter} = state;
 
@@ -38,7 +42,7 @@ const Homepage =({setLoginUser})=>{
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {rows.map(row => {
+          {page.map(row => {
             prepareRow(row)
             return (
               <tr {...row.getRowProps()}>
@@ -50,10 +54,14 @@ const Homepage =({setLoginUser})=>{
           })}
         </tbody>
       </table>
-      {/* <div className="homepage">
-            <h1>Hello Homepage</h1>
+      <div>
+        <button onClick={()=> previousPage()} disabled={!canPreviousPage}>Previous</button>
+        <button className="button2" onClick={()=> nextPage()} disabled={!canNextPage}>Next</button>
+      </div>
+      <div className="homepage">
+            <h1>ADRIXUS</h1>
             <div className="button" onClick={() => setLoginUser({})} >Logout</div>
-      </div> */}
+      </div>
     </>
   )
 }
