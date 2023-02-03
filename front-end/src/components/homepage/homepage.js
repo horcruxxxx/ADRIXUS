@@ -19,23 +19,23 @@ const Homepage =({setLoginUser})=>{
     switch (sortKey) {
       case "Fname":
         console.log("1");
-        temp  = sortedArray.sort((a, b) => {
-          if (a.firstName < b.firstName) return -1;
-          if (a.firstName > b.firstName) return 1;
+        sortedArray.sort((a, b) => {
+          if (a.fname < b.fname) return -1;
+          if (a.fname > b.fname) return 1;
           return 0;
         });
         break;
       case "Lname":
         console.log("2");
-        temp = sortedArray.sort((a, b) => {
-          if (a.lastName < b.lastName) return -1;
-          if (a.lastName > b.lastName) return 1;
+        sortedArray.sort((a, b) => {
+          if (a.lname < b.lname) return -1;
+          if (a.lname > b.lname) return 1;
           return 0;
         });
         break;
       case "Email":
         console.log("3");
-        temp = sortedArray.sort((a, b) => {
+        sortedArray.sort((a, b) => {
           if (a.email < b.email) return -1;
           if (a.email > b.email) return 1;
           return 0;
@@ -43,15 +43,14 @@ const Homepage =({setLoginUser})=>{
         break;
       default:
         console.log("none");
-        temp = sortedArray;
         break;
     }
-    console.log(temp);
-    setSortedData(temp);
+    // console.log(temp);
+    setSortedData(sortedArray);
   };
 
-  const columns = useMemo(() => COLUMNS, [])
-  const data = useMemo(() => sortedData, [])
+  const columns = COLUMNS;// useMemo(() => COLUMNS, [])
+  const data = sortedData;// useMemo(() => sortedData, [])
 
   const {
     getTableProps,
