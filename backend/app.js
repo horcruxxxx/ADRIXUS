@@ -3,10 +3,17 @@ const mongoose = require("mongoose");
 const cors = require("cors"); 
 const md5 = require("md5"); //for Hasing.
 const app = express();
+const path = require("path");
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors())
 
+
+//static files
+app.use(express.static(path.join(__dirname,"../front-end/build")));
+app.get('*',function(req,res){
+    res.sendFile(path.join(__dirname,"../front-end/build/index.html"))
+});
 
 mongoose.connect("mongodb+srv://Admin-Rachit:Atlas@cluster0.ur4pnxy.mongodb.net/AdrixusDB", {
     useNewUrlParser: true,

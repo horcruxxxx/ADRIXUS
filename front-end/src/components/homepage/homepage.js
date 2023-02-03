@@ -18,7 +18,7 @@ const Homepage =({setLoginUser})=>{
     // console.log(sortKey);
     switch (sortKey) {
       case "Fname":
-        console.log("1");
+        // console.log("1");
         sortedArray.sort((a, b) => {
           if (a.fname < b.fname) return -1;
           if (a.fname > b.fname) return 1;
@@ -26,7 +26,7 @@ const Homepage =({setLoginUser})=>{
         });
         break;
       case "Lname":
-        console.log("2");
+        // console.log("2");
         sortedArray.sort((a, b) => {
           if (a.lname < b.lname) return -1;
           if (a.lname > b.lname) return 1;
@@ -34,7 +34,7 @@ const Homepage =({setLoginUser})=>{
         });
         break;
       case "Email":
-        console.log("3");
+        // console.log("3");
         sortedArray.sort((a, b) => {
           if (a.email < b.email) return -1;
           if (a.email > b.email) return 1;
@@ -42,7 +42,7 @@ const Homepage =({setLoginUser})=>{
         });
         break;
       default:
-        console.log("none");
+        // console.log("none");
         break;
     }
     // console.log(temp);
